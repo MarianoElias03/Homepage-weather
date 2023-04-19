@@ -1,7 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import React, { useEffect, useState } from 'react';
+//import { Weather } from '../components';
 
 function App() {
+  const [Weather, setWeatherHTML] = useState('');
+
+  useEffect(() => {
+    async function fetchWeather() {
+      const html = await Weather();
+      setWeatherHTML(html);
+    }
+
+    fetchWeather();
+  }, []);
+
   return (
     <div className='App'>
       <nav className="container-fluid navbar bg-primary" data-bs-theme="dark">
