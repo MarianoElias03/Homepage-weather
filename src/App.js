@@ -3,23 +3,21 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <nav className="container-fluid navbar bg-primary" data-bs-theme="dark">
+        <a className="fs-4 fw-bold ms-2">Template Navbar</a>
+      </nav>
+      <div className='border border-warning' style={{ display: "inline-flex", height: '90vh'}}>
+        <div className="border border-primary" style={{ height: "100%", width: "75vw"}}>
+          weather
+        </div>
+        <div className='' style={{ width: "25vw"}}>
+          News
+        </div>
+      </div>
     </div>
   );
 }
 
 export default App;
+
