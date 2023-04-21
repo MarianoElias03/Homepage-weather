@@ -44,7 +44,7 @@ const News = () => {
         <button type="submit">Search</button>
       </form>
       <div>
-        {articles.map((article, index) => (
+        {articles.slice(0,3).map((article, index) => (
           <div key={index}>
             <h2>
               <a href={article.url} target="_blank" rel="noopener noreferrer">
