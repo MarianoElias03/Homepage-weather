@@ -43,16 +43,16 @@ const News = () => {
         <input type="text" value={query} onChange={handleChange} placeholder="Search news..." />
         <button type="submit">Search</button>
       </form>
-      <div>
+      <div className="start-0 translate-end-x">
         {articles.slice(0,3).map((article, index) => (
-          <div key={index}>
-            <h2>
-              <a href={article.url} target="_blank" rel="noopener noreferrer">
-                {article.title}
-              </a>
-            </h2>
-            <p>{article.description}</p>
-          </div>
+        <div className="m-3 ">
+            <div class="card " style={{ width: "18rem", marginLeft: "auto", marginRight: "auto" }}>
+                <div class="card-body">
+                    <a href={article.url} target="_blank" rel="noopener noreferrer"> <h5 class="card-title">{article.title}</h5></a>
+                    <p class="card-text">{article.description}</p>
+                </div>
+            </div>
+        </div>
         ))}
       </div>
     </div>
