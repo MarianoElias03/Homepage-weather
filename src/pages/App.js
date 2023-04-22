@@ -6,10 +6,16 @@ import News from "../components/NewsCard.js";
 
 function App() {
   return (
-    <div className="App">
-      <div className="container-fluid">
-        <div><Weather /></div>
-        <div><News /></div>
+    <div className='App'>
+      <nav className="container-fluid navbar bg-primary pb-5" data-bs-theme="dark">
+      </nav>
+      <div className='border border-warning' style={{ display: "inline-flex", height: '90vh'}}>
+        <div className="border border-primary" style={{ height: "100%", width: "75vw"}}>
+          <Weather />
+        </div>
+        <div className='' style={{ width: "25vw"}}>
+          <News />
+        </div>
       </div>
     </div>
   );
