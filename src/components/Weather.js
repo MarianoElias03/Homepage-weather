@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import RainAnimation from "./WeatherAnimation/RainAnimation.js";
+import "../pages/styles/weather.css";
 
 const Weather = () => {
   // Component state
@@ -35,50 +37,59 @@ const Weather = () => {
     getLocation();
   }, []);
 
-  const handleCityChange = (e) => {
-    setCity(e.target.value);
-  };
+  function getWeatherIcon(weather) {
+    let icon;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetchWeather(null, null, city);
-  };
-  console.log(weatherData);
+    switch (weather.main) {
+      case 'Clear':
+        icon = '☀️';
+        break;
+      case 'Clouds':
+        icon = '☁️';
+        break;
+      case 'Rain':
+        icon = <RainAnimation />
+        break;
+      case 'Snow':
+        icon = '❄️';
+        break;
+      case 'Thunderstorm':
+        icon = '⛈️';
+        break;
+      default:
+        icon = '🌥️';
+    }
+
+    return icon;
+  }
+
   return (
     <>
-      <div className="border-primary">
-        <h1>React Weather App</h1>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={city}
-            id={city}
-            onChange={handleCityChange}
-            placeholder="Enter city name"
-          />
-          <button type="submit">Get Weather</button>
-        </form>
+      <div className="cover">
         {weatherData && (
           <div>
             {weatherData.error ? (
               <p>{weatherData.error}</p>
-            ) : weatherData.sys && weatherData.weather && weatherData.main && weatherData.wind ? (
+            ) : weatherData.sys && weatherData.weather && weatherData.main && weatherData.wind && weatherData.weather ? (
               <>
                 <h2>
+                  {getWeatherIcon(weatherData.weather[0])}
                   {weatherData.name}, {weatherData.sys.country}
                 </h2>
-                <h3>{weatherData.weather[0].main}</h3>
+                <h3> {weatherData.weather[0].description}</h3>
                 <p>Temperature: {weatherData.main.temp} °C</p>
                 <p>Humidity: {weatherData.main.humidity} %</p>
                 <p>Wind: {weatherData.wind.speed} m/s</p>
+                <p>weather: {weatherData.weather[0].main} </p>
               </>
             ) : (
               <p>Loading...</p>
             )}
+
           </div>
         )}
-      </div>
-    </>
+    </div>
+  </>
   );
 };
 
